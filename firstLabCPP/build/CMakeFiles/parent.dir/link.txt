@@ -1,1 +1,0 @@
-/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/parent.dir/src/parent.cpp.o CMakeFiles/parent.dir/src/parent_process.cpp.o CMakeFiles/parent.dir/src/pipe.cpp.o CMakeFiles/parent.dir/src/child_process.cpp.o CMakeFiles/parent.dir/src/utils.cpp.o CMakeFiles/parent.dir/src/os_linux.cpp.o -o parent

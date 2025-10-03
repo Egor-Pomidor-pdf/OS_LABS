@@ -1,4 +1,0 @@
-/Users/egortujmukov/Desktop/ОСи/firstLabCPP/build/CMakeFiles/parent.dir
-/Users/egortujmukov/Desktop/ОСи/firstLabCPP/build/CMakeFiles/child.dir
-/Users/egortujmukov/Desktop/ОСи/firstLabCPP/build/CMakeFiles/edit_cache.dir
-/Users/egortujmukov/Desktop/ОСи/firstLabCPP/build/CMakeFiles/rebuild_cache.dir
