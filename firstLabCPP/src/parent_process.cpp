@@ -33,15 +33,12 @@ void ParentProcess::start() {
         if (line.empty()) break;
         Pipe* target_pipe = (line.length() > 10) ? pipe2 : pipe1;
         target_pipe->write(line.c_str(), line.length());
-        // Добавим \n, если нужно, но getline включает \n? Нет, getline удаляет \n
-        target_pipe->write("\n", 1);  // Добавим newline для child
+        target_pipe->write("\n", 1); 
     }
 
-    // Close write ends
     ClosePipe(pipe1->getWriteFd());
     ClosePipe(pipe2->getWriteFd());
 
-    // Wait for children
     WaitProcess(child1->getPid());
     WaitProcess(child2->getPid());
 
