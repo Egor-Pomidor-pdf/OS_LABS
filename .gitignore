@@ -2,5 +2,7 @@ firstLabCPP/build
 firstLab/
 fork+create_process/
 reportExample.zip
+build/
+.vscode/
 
 

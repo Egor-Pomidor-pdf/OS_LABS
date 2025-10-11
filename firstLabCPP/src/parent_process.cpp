@@ -19,12 +19,10 @@ void ParentProcess::start() {
 
     child1 = new ChildProcess(pipe1, file1, true);
     child1->execute();
-    // Close read end in parent
     ClosePipe(pipe1->getReadFd());
 
     child2 = new ChildProcess(pipe2, file2, false);
     child2->execute();
-    // Close read end in parent
     ClosePipe(pipe2->getReadFd());
 
     std::cout << "Enter lines (empty line to end):" << std::endl;

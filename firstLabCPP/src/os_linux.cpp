@@ -2,7 +2,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include <cstdio>  // Для perror
+#include <cstdio> 
 
 int CreatePipe(PipeHandle fd[2]) {
     return pipe(fd);
@@ -21,21 +21,17 @@ int ClosePipe(PipeHandle fd) {
 }
 
 ProcessHandle CreateChildProcess(const char* exe, char* const* argv, PipeHandle stdin_handle) {
-    pid_t pid = fork();
+    pid_t pid = Fork();
     if (pid == -1) {
         perror("fork");
         return -1;
     }
     if (pid == 0) {
-        // Child
         if (stdin_handle != INVALID_PIPE_HANDLE) {
             Dup2(stdin_handle, STDIN_FILENO);
             ClosePipe(stdin_handle);
         }
-        // Закрыть write end, но поскольку pipe в parent, child не имеет его
-        execvp(exe, argv);
-        perror("execvp");
-        _exit(1);
+        Exec(exe, argv);
     }
     return pid;
 }
@@ -47,4 +43,19 @@ int WaitProcess(ProcessHandle pid) {
 
 int Dup2(PipeHandle oldfd, int newfd) {
     return dup2(oldfd, newfd);
+}
+
+ProcessHandle Fork() {
+    pid_t pid = fork();
+    if (pid == -1) {
+        perror("fork");
+    }
+    return pid;
+}
+
+int Exec(const char* exe, char* const* argv) {
+    execvp(exe, argv);
+    perror("execvp");
+    _exit(1);  
+    return -1; 
 }

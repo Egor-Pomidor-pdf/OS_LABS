@@ -1,6 +1,6 @@
 #pragma once
 #include "os.h"
-#include <cstddef>  // Для size_t
+#include <cstddef> 
 
 class Pipe {
 private:

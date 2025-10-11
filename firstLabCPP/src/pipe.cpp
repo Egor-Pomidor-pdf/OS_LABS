@@ -1,8 +1,9 @@
 #include "../include/pipe.hpp"
+#include <stdexcept>  
 
 Pipe::Pipe() {
     if (CreatePipe(fd) != 0) {
-        // Обработка ошибки, но для простоты пропустим
+        throw std::runtime_error("Failed to create pipe");
     }
 }
 

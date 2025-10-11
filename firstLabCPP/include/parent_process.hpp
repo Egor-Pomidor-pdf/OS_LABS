@@ -14,5 +14,5 @@ private:
 public:
     ParentProcess();
     ~ParentProcess();
-    void start();  // Главный метод: читает input, запускает children, фильтрует строки
+    void start();  
 };

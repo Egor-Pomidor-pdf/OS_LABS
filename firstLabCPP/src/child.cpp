@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
     while (std::getline(std::cin, line)) {
         std::string reversed = reverseString(line);
         file << reversed << std::endl;
-        std::cout << reversed << std::endl;  // Вывод в stdout
+        std::cout << reversed << std::endl; 
     }
 
     file.close();

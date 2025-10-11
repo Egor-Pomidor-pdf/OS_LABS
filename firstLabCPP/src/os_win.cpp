@@ -1,5 +1,5 @@
 #include "../include/os.h"
-#include <iostream>  // Для std::cerr
+#include <iostream> 
 
 int CreatePipe(PipeHandle fd[2]) {
     SECURITY_ATTRIBUTES saAttr;
@@ -12,7 +12,6 @@ int CreatePipe(PipeHandle fd[2]) {
         return -1;
     }
 
-    // Make write end non-inheritable
     if (!SetHandleInformation(fd[1], HANDLE_FLAG_INHERIT, 0)) {
         std::cerr << "SetHandleInformation failed" << std::endl;
         return -1;
@@ -50,7 +49,7 @@ ProcessHandle CreateChildProcess(const char* exe, char* const* argv, PipeHandle 
 
     si.dwFlags |= STARTF_USESTDHANDLES;
     si.hStdInput = stdin_handle;
-    si.hStdOutput = GetStdHandle(STD_OUTPUT_HANDLE);  // Оставляем stdout как есть
+    si.hStdOutput = GetStdHandle(STD_OUTPUT_HANDLE);  
     si.hStdError = GetStdHandle(STD_ERROR_HANDLE);
 
     std::string cmdline;
@@ -64,7 +63,6 @@ ProcessHandle CreateChildProcess(const char* exe, char* const* argv, PipeHandle 
         return INVALID_HANDLE_VALUE;
     }
 
-    // Close thread handle
     CloseHandle(pi.hThread);
 
     return pi.hProcess;
@@ -77,6 +75,15 @@ int WaitProcess(ProcessHandle pid) {
 }
 
 int Dup2(PipeHandle oldfd, int newfd) {
-    // No-op on Windows, since we set in STARTUPINFO
     return 0;
+}
+
+ProcessHandle Fork() {
+    std::cerr << "Fork not supported on Windows" << std::endl;
+    return INVALID_HANDLE_VALUE;
+}
+
+int Exec(const char* exe, char* const* argv) {
+    std::cerr << "Exec not supported on Windows" << std::endl;
+    return -1;
 }
