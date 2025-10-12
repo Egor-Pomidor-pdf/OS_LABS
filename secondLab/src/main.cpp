@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
     }
     std::srand(std::time(nullptr));
 
-    const int N = 33554432;
+    const int N = 256;
     std::vector<int> arr(N);
 
     for (int i = 0; i < N; i++) {
@@ -28,7 +28,8 @@ int main(int argc, char* argv[]) {
     std::cout << "\n";
 
     auto start = std::chrono::high_resolution_clock::now();
-    oddEvenMergeSort(arr, 0, arr.size());
+    OddEvenSorter sorter(arr, maxThreads);
+    sorter.start();
     auto end = std::chrono::high_resolution_clock::now();
 
     std::cout << "After sorting:\n";
