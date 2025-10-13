@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/parent.dir/src/parent.cpp.o CMakeFiles/parent.dir/src/parent_process.cpp.o CMakeFiles/parent.dir/src/pipe.cpp.o CMakeFiles/parent.dir/src/child_process.cpp.o CMakeFiles/parent.dir/src/utils.cpp.o CMakeFiles/parent.dir/src/os_linux.cpp.o -o parent 
