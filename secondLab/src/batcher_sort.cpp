@@ -2,7 +2,6 @@
 #include <vector>
 #include <algorithm>
 #include "../include/os.h"
-#include "../include/glob.h"
 #include "../include/batcher_sort.h"
 
 
@@ -53,15 +52,33 @@ void OddEvenSorter::oddEvenMergeSort(int lo, int n) {
     }
 }
 
+bool OddEvenSorter::trySpawnThread() {
+    bool result = false;
+    globalLock_.lock();
+    if (activeThreads_ < maxThreads_) {
+        activeThreads_++;
+        result = true;
+    }
+    globalLock_.unlock();
+    return result;
+}
+
+void OddEvenSorter::threadFinished() {
+    globalLock_.lock();
+    activeThreads_--;
+    globalLock_.unlock();
+}
+
 
 
 void* OddEvenSorter::sortPart(void* arg) {
     ThreadData* data = (ThreadData*)arg; 
-    std::cout << "Thread started. Active threads: " << activeThreads << "\n";
+    std::cout << "Thread started. Active threads: " << data->sorter->activeThreads_ << "\n";
     data->sorter->oddEvenMergeSort(data->lo, data->n); 
-    std::cout << "Thread finished. Active threads: " << activeThreads << "\n";
-    threadFinished(); 
+    std::cout << "Thread finished. Active threads: " << data->sorter->activeThreads_ << "\n";
+    data->sorter->threadFinished(); 
     delete data;
 
     return nullptr;
 }
+

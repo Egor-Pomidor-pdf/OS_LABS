@@ -16,7 +16,6 @@ add_executable(main
     src/batcher_sort.cpp
     src/main.cpp
     src/mutex.cpp
-    src/glob.cpp
     ${PLATFORM_SOURCES}
 )
 

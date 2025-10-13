@@ -1,5 +1,4 @@
 #include "../include/os.h"
-#include "../include/glob.h"
 #include <windows.h>
 #include <iostream>
 
@@ -28,19 +27,19 @@ void ThreadJoin(ThreadHandle handle) {
     CloseHandle(handle);  // закрываем дескриптор потока
 }
 
-bool trySpawnThread() {
-    bool result = false;
-    globalLock.lock();           
-    if (activeThreads < maxThreads) {
-        activeThreads++;       
-        result = true;
-    }
-    globalLock.unlock();     
-    return result;
-}
+// bool trySpawnThread() {
+//     bool result = false;
+//     globalLock.lock();           
+//     if (activeThreads < maxThreads) {
+//         activeThreads++;       
+//         result = true;
+//     }
+//     globalLock.unlock();     
+//     return result;
+// }
 
-void threadFinished() {
-    globalLock.lock();
-    activeThreads--;               
-    globalLock.unlock();
-}
+// void threadFinished() {
+//     globalLock.lock();
+//     activeThreads--;               
+//     globalLock.unlock();
+// }

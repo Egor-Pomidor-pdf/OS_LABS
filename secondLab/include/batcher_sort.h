@@ -12,7 +12,11 @@ private:
     void oddEvenMergeSort(int lo, int n);                  
     void oddEvenMerge(int lo, int n, int r);  
     void compareAndSwap(int i, int j);        
-    static void* sortPart(void* arg);         
+    static void* sortPart(void* arg);
+    friend void* sortPart(void* arg);
+    bool trySpawnThread();
+    void threadFinished();
+             
 
     struct ThreadData {
         OddEvenSorter* sorter;

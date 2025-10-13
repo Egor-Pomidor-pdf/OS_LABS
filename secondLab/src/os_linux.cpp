@@ -1,5 +1,4 @@
 #include "../include/os.h"
-#include "../include/glob.h"
 #include <pthread.h>
 #include <errno.h>
 #include <stdio.h>   
@@ -20,19 +19,19 @@ void ThreadJoin(ThreadHandle handle) {
     }
 }
 
-bool trySpawnThread() {
-    bool result = false;
-    globalLock.lock();           
-    if (activeThreads < maxThreads) {
-        activeThreads++;       
-        result = true;
-    }
-    globalLock.unlock();     
-    return result;
-}
+// bool trySpawnThread() {
+//     bool result = false;
+//     globalLock.lock();           
+//     if (activeThreads < maxThreads) {
+//         activeThreads++;       
+//         result = true;
+//     }
+//     globalLock.unlock();     
+//     return result;
+// }
 
-void threadFinished() {
-    globalLock.lock();
-    activeThreads--;               
-    globalLock.unlock();
-}
+// void threadFinished() {
+//     globalLock.lock();
+//     activeThreads--;               
+//     globalLock.unlock();
+// }

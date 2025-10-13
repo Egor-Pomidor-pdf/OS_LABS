@@ -1,13 +1,13 @@
 #include <iostream>
 #include <vector>
 #include "../include/batcher_sort.h"
-#include "../include/glob.h"
 #include <chrono> //чтоб время измерять
 #include <cstdlib> //чтоб рандом было
 #include <ctime>  //чтоб для рандома тоже
 
 
 int main(int argc, char* argv[]) {
+    int maxThreads;
     if (argc > 1) {
         maxThreads = std::atoi(argv[1]);
         if (maxThreads > 16) maxThreads = 16; 
