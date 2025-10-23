@@ -26,20 +26,3 @@ void ThreadJoin(ThreadHandle handle) {
     }
     CloseHandle(handle);  // закрываем дескриптор потока
 }
-
-// bool trySpawnThread() {
-//     bool result = false;
-//     globalLock.lock();           
-//     if (activeThreads < maxThreads) {
-//         activeThreads++;       
-//         result = true;
-//     }
-//     globalLock.unlock();     
-//     return result;
-// }
-
-// void threadFinished() {
-//     globalLock.lock();
-//     activeThreads--;               
-//     globalLock.unlock();
-// }

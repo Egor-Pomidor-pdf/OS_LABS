@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
     }
     std::srand(std::time(nullptr));
 
-    const int N = 256;
+    const int N = 131072;
     std::vector<int> arr(N);
 
     for (int i = 0; i < N; i++) {
