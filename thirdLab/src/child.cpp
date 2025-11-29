@@ -44,3 +44,4 @@ int main(int argc, char **argv)
         UnmapFile(mapped_memory, mapped_size);
         return 0;
     }
+}
